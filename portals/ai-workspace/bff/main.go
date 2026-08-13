@@ -118,7 +118,7 @@ func pipelineBuildProbe() string {
 // pipelineBuildProbeRevision is bumped whenever a fresh image has to be forced
 // for verification purposes.
 func pipelineBuildProbeRevision() int {
-	return 1
+	return 2
 }
 
 func main() {

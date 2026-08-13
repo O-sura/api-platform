@@ -174,4 +174,5 @@ function registerHelpers() {
     Object.entries(helpers).forEach(([name, fn]) => Handlebars.registerHelper(name, fn));
 }
 
+// Adding a test commit
 module.exports = { registerHelpers };

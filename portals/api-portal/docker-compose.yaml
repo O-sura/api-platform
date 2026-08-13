@@ -40,7 +40,7 @@ services:
       - api-portal-network
 
   api-portal:
-    image: ghcr.io/wso2/api-platform/api-portal:1.0.0.2
+    image: ghcr.io/wso2/api-platform/api-portal:1.0.0.3
     container_name: api-portal
     restart: unless-stopped
     profiles: ["api-portal"]
@@ -78,7 +78,7 @@ services:
       - api-portal-network
 
   ai-workspace:
-    image: ghcr.io/wso2/api-platform/ai-workspace:1.0.0.2
+    image: ghcr.io/wso2/api-platform/ai-workspace:1.0.0.3
     restart: unless-stopped
     profiles: ["ai-workspace"]
     depends_on:

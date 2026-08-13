@@ -106,6 +106,21 @@ func (s *stringSliceFlag) Set(value string) error {
 	return nil
 }
 
+// pipelineBuildProbe returns a marker string that exists solely to give the U2
+// support pipeline a change whose effect is guaranteed to reach a build artifact.
+// Frontend-only edits can be eliminated by the bundler, which leaves the compiled
+// output — and therefore the image digest — untouched, making them useless for
+// verifying that a release actually produced a new image.
+func pipelineBuildProbe() string {
+	return "u2-support-pipeline-probe"
+}
+
+// pipelineBuildProbeRevision is bumped whenever a fresh image has to be forced
+// for verification purposes.
+func pipelineBuildProbeRevision() int {
+	return 1
+}
+
 func main() {
 	// -config is repeatable and required: files are merged in the order given with
 	// last-wins precedence. There is no default path — the container and `make
@@ -137,6 +152,10 @@ func main() {
 		cfg.Server.StaticDir = *staticDir
 	}
 	slog.SetDefault(logger.NewLogger(logger.Config{Level: cfg.Logging.Level, Format: cfg.Logging.Format}))
+
+	// Debug level, so this is silent under the default info config — the point is
+	// that the probe is referenced and therefore compiled into the binary.
+	slog.Debug("build probe", "marker", pipelineBuildProbe(), "revision", pipelineBuildProbeRevision())
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()

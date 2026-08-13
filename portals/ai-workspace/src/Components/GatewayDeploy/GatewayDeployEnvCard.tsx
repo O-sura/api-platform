@@ -11,6 +11,10 @@
  * associated services.
  */
 
+// NOTE: dummy comment added to exercise the U2 support pipeline's change
+// detection — an ai-workspace-only edit should rebuild ai-workspace without
+// touching api-portal, while both portals are still marked for republish.
+
 import { useEffect, useMemo, useState } from 'react';
 import { Box, Button, IconButton, Typography } from '@wso2/oxygen-ui';
 import { SquarePen } from 'lucide-react';

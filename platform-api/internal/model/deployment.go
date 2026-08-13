@@ -17,6 +17,10 @@
 
 package model
 
+// NOTE: dummy comment added to exercise the U2 support pipeline's change
+// detection — a platform-api-only edit should rebuild platform-api alone while
+// still marking both portal distributions for republish.
+
 import (
 	"time"
 )

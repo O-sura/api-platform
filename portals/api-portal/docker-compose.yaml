@@ -78,7 +78,7 @@ services:
       - api-portal-network
 
   ai-workspace:
-    image: ghcr.io/wso2/api-platform/ai-workspace:1.0.0.4
+    image: ghcr.io/wso2/api-platform/ai-workspace:1.0.0.5
     restart: unless-stopped
     profiles: ["ai-workspace"]
     depends_on:
